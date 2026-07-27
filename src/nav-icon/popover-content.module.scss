@@ -14,13 +14,22 @@
   border-bottom: 1px solid var(--rp-c-divider-light);
   font-size: 20px;
   font-weight: 600;
-  color: var(--rp-c-text-1);
-  text-decoration: none;
   position: relative;
-  &::after {
-    content: '';
+
+  .brand {
+    display: flex;
+    align-items: center;
+    color: var(--rp-c-text-1);
+    text-decoration: none;
+  }
+
+  .channel {
     position: absolute;
-    inset: 8px 16px 0;
+    top: 8px;
+    right: 16px;
+    bottom: 0;
+    width: 64px;
+    font-size: 0;
     background-image: url('./assets/hash-browns.png');
     background-repeat: no-repeat;
     background-position: right bottom;
