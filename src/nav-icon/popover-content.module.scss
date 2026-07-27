@@ -9,7 +9,7 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 16px 24px;
+  padding: 24px 24px 16px;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--rp-c-divider-light);
   font-size: 20px;
@@ -28,7 +28,7 @@
     top: 8px;
     right: 16px;
     bottom: 0;
-    width: 64px;
+    aspect-ratio: 1;
     font-size: 0;
     background-image: url('./assets/hash-browns.png');
     background-repeat: no-repeat;

@@ -1,5 +1,11 @@
 # @nsnanocat/doc-ui
 
+## 2.4.6
+
+### Patch Changes
+
+- 恢复项目导航右上角图片的原始尺寸与顶部位置，同时保留 Telegram 频道链接。
+
 ## 2.4.5
 
 ### Patch Changes
