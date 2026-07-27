@@ -1,10 +1,10 @@
-import { Children, cloneElement, isValidElement, useCallback, useMemo } from 'react';
-import { Tab, Tabs } from 'rspress/theme';
-import { AppTabContent } from './app-tab-content';
-import { APP_LABEL_MAP, SUPPORTED_APPS, type SupportedApp } from './constants';
-import { ModuleInstallItem } from './module-install-item';
-import { ModuleInstallTab } from './module-install-tab';
-import styles from './module-install.module.scss';
+import { Children, cloneElement, isValidElement, useCallback, useMemo } from "react";
+import { Tab, Tabs } from "rspress/theme";
+import { AppTabContent } from "./app-tab-content";
+import { APP_LABEL_MAP, SUPPORTED_APPS, type SupportedApp } from "./constants";
+import styles from "./module-install.module.scss";
+import { ModuleInstallItem } from "./module-install-item";
+import { ModuleInstallTab } from "./module-install-tab";
 
 export interface ModuleInstallProps {
   urlPrefix?: string;
@@ -14,12 +14,18 @@ export interface ModuleInstallProps {
   children?: React.ReactNode;
 }
 
-// biome-ignore lint/style/useNamingConvention: React Component
-export function ModuleInstall({ urlPrefix = '', urls, children }: ModuleInstallProps) {
+/**
+ * 渲染适用于多个代理工具的模块安装标签页。
+ * Renders module installation tabs for supported proxy tools.
+ *
+ * @param props - 模块安装属性。 / Module installation properties.
+ * @returns 模块安装标签页。 / The module installation tabs.
+ */
+export function ModuleInstall({ urlPrefix = "", urls, children }: ModuleInstallProps) {
   const renderTabLabel = useCallback((appType: SupportedApp) => {
     return (
       <div className={styles.label}>
-        <div className={[styles.icon, styles[`icon-${appType}`]].join(' ')} />
+        <div className={[styles.icon, styles[`icon-${appType}`]].join(" ")} />
         {APP_LABEL_MAP[appType]}
       </div>
     );

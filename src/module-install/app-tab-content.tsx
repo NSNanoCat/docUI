@@ -1,11 +1,10 @@
-import { useMemo } from 'react';
-import { Badge } from 'rspress/theme';
-import { APP_INSTALL_INFO_MAP, type SupportedApp } from './constants';
-import styles from './module-install.module.scss';
-import { QRCode } from './qrcode';
+import { Badge } from "rspress/theme";
+import { APP_INSTALL_INFO_MAP, type SupportedApp } from "./constants";
+import styles from "./module-install.module.scss";
+import { QRCode } from "./qrcode";
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
-type IBadgeProps = Omit<BadgeProps, 'text'> & { text: React.ReactNode };
+type IBadgeProps = Omit<BadgeProps, "text"> & { text: React.ReactNode };
 
 export interface AppTabContentProps {
   appType: SupportedApp;
@@ -24,46 +23,45 @@ export const AppTabContent: React.FC<AppTabContentProps> = ({ appType, url, titl
   }
 
   const getBadgeProps = (item: IBadgeProps | React.ReactNode) => {
-    if (item && typeof item === 'object' && 'text' in item && 'type' in item) {
+    if (item && typeof item === "object" && "text" in item && "type" in item) {
       return item as BadgeProps;
     }
     if (item) {
       return {
-        type: 'warning',
+        type: "warning",
         text: item,
       } as BadgeProps;
     }
   };
 
-  const badgeRender = useMemo(() => {
-    if (Array.isArray(badge)) {
-      return (
+  let badgeRender: React.ReactNode = null;
+  if (Array.isArray(badge)) {
+    badgeRender = (
+      <span className={styles.badge}>
+        {badge.map((item, index) => {
+          const badgeProps = getBadgeProps(item);
+          if (!badgeProps) {
+            return null;
+          }
+          return <Badge key={index} {...badgeProps} />;
+        })}
+      </span>
+    );
+  } else {
+    const badgeProps = getBadgeProps(badge);
+    if (badgeProps) {
+      badgeRender = (
         <span className={styles.badge}>
-          {badge.map((item, index) => {
-            const badgeProps = getBadgeProps(item);
-            if (!badgeProps) {
-              return null;
-            }
-            return <Badge key={index} {...badgeProps} />;
-          })}
+          <Badge {...badgeProps} />
         </span>
       );
     }
-    const badgeProps = getBadgeProps(badge);
-    if (!badgeProps) {
-      return null;
-    }
-    return (
-      <span className={styles.badge}>
-        <Badge {...badgeProps} />
-      </span>
-    );
-  }, [badge]);
+  }
 
   return (
-    <div className={['rspress-directive', styles.container].join(' ')}>
+    <div className={["rspress-directive", styles.container].join(" ")}>
       {title || badge ? (
-        <div className={[styles['item-title'], 'mb-2'].join(' ')}>
+        <div className={[styles["item-title"], "mb-2"].join(" ")}>
           {title && <div>{title}</div>}
           {badgeRender}
         </div>
@@ -89,7 +87,7 @@ export const AppTabContent: React.FC<AppTabContentProps> = ({ appType, url, titl
 
         <div>
           <strong>{manualInstallInfo.urlTitle}</strong>
-          <div className={styles['url-wrap']}>
+          <div className={styles["url-wrap"]}>
             <div className="rspress-scrollbar">
               <code>{url}</code>
             </div>

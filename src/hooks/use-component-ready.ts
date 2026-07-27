@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from "react";
 
 interface UseComponentReady {
   enabled?: boolean;
@@ -18,7 +18,7 @@ export function useComponentReady<T extends HTMLElement = HTMLElement>({ enabled
   });
 
   useLayoutEffect(() => {
-    if (!('IntersectionObserver' in globalThis)) {
+    if (!("IntersectionObserver" in globalThis)) {
       setReady(true);
       return;
     }

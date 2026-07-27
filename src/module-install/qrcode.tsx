@@ -1,7 +1,7 @@
-import { QRCodeSVG } from '@rc-component/qrcode';
-import { Popover } from '../popover';
-import IconQrCode from './icons/qrcode.svg';
-import styles from './module-install.module.scss';
+import { QRCodeSVG } from "@rc-component/qrcode";
+import { Popover } from "../popover";
+import IconQrCode from "./icons/qrcode.svg";
+import styles from "./module-install.module.scss";
 
 export const QRCode: React.FC<{ value: string }> = ({ value }) => {
   return (
@@ -18,7 +18,7 @@ export const QRCode: React.FC<{ value: string }> = ({ value }) => {
       placement="bottomLeft"
     >
       <span>
-        <IconQrCode className={styles['qrcode-handler']} />
+        <IconQrCode className={styles["qrcode-handler"]} />
       </span>
     </Popover>
   );

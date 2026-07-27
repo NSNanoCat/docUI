@@ -1,29 +1,29 @@
-import styles from './popover-content.module.scss';
+import styles from "./popover-content.module.scss";
 
 const PROJECTS = [
   {
-    icon: 'https://avatars.githubusercontent.com/u/182791244?s=80&v=4',
-    url: 'https://NSRingo.github.io/',
-    title: ' iRingo',
-    description: '解锁更多 Apple® 服务与功能',
+    icon: "https://avatars.githubusercontent.com/u/182791244?s=80&v=4",
+    url: "https://NSRingo.github.io/",
+    title: " iRingo",
+    description: "解锁更多 Apple® 服务与功能",
   },
   {
-    icon: 'https://avatars.githubusercontent.com/u/100578089?s=80&v=4',
-    url: 'https://DualSubs.github.io/',
-    title: '🍿️ DualSubs',
-    description: '双语及增强字幕生成工具',
+    icon: "https://avatars.githubusercontent.com/u/100578089?s=80&v=4",
+    url: "https://DualSubs.github.io/",
+    title: "🍿️ DualSubs",
+    description: "双语及增强字幕生成工具",
   },
   {
-    icon: 'https://avatars.githubusercontent.com/u/129515498?s=80&v=4',
-    url: 'https://BiliUniverse.io/',
-    title: '🪐 哔哩万象 BiliUniverse',
-    description: '哔哩哔哩功能优化及增强解决方案',
+    icon: "https://avatars.githubusercontent.com/u/129515498?s=80&v=4",
+    url: "https://BiliUniverse.io/",
+    title: "🪐 哔哩万象 BiliUniverse",
+    description: "哔哩哔哩功能优化及增强解决方案",
   },
   {
-    icon: 'https://avatars.githubusercontent.com/u/190900859?s=80&v=4',
-    url: 'https://Auraflare.github.io',
-    title: '🌥️ 光耀 Auraflare',
-    description: 'Cloudflare® 资源集成解决方案',
+    icon: "https://avatars.githubusercontent.com/u/190900859?s=80&v=4",
+    url: "https://Auraflare.github.io",
+    title: "🌥️ 光耀 Auraflare",
+    description: "Cloudflare® 资源集成解决方案",
   },
 ];
 

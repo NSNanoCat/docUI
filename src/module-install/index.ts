@@ -1,1 +1,1 @@
-export * from './module-install';
+export * from "./module-install";

@@ -1,4 +1,12 @@
-# @iringo/doc-ui
+# @nsnanocat/doc-ui
+
+## 2.4.2
+
+### Patch Changes
+
+- 将 package 迁移到 `NSNanoCat/docUI`，并改为仅通过版本 tag 自动发布到 GitHub Packages。
+- 补全 React、React DOM 与 Rspress 的 peer dependencies、公开导出和独立安装文档。
+- 将 Rspress 主题作为 `@nsnanocat/doc-ui/theme` 子路径一并发布。
 
 ## 2.4.1
 

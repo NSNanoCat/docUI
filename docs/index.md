@@ -2,7 +2,7 @@
 pageType: home
 
 hero:
-  name: Demo
+  name: "@nsnanocat/doc-ui"
 
 features:
   - icon: 🛠️

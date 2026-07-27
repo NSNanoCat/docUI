@@ -1,9 +1,8 @@
-import { Suspense, lazy, memo } from 'react';
-import { useComponentReady } from '../hooks/use-component-ready';
-import { ContributorItem } from './contributor-item';
-import type { Contributor } from './types';
-
-import styles from './contributors.module.scss';
+import { lazy, memo, Suspense } from "react";
+import { useComponentReady } from "../hooks/use-component-ready";
+import { ContributorItem } from "./contributor-item";
+import styles from "./contributors.module.scss";
+import type { Contributor } from "./types";
 
 export interface ContributorsProps {
   repo: `${string}/${string}`;
@@ -35,7 +34,7 @@ const createContributorsComponent = (repo: `${string}/${string}`) =>
     const contributors = await fetchContributors(repo);
     return {
       default: () => (
-        <div className={styles['contributors']}>
+        <div className={styles.contributors}>
           {contributors.map((item) => (
             <ContributorItem key={item.id} contributor={item} />
           ))}
@@ -44,6 +43,13 @@ const createContributorsComponent = (repo: `${string}/${string}`) =>
     };
   });
 
+/**
+ * 按需加载并展示 GitHub 仓库贡献者。
+ * Lazily loads and displays contributors for a GitHub repository.
+ *
+ * @param props - 贡献者组件属性。 / Contributor component properties.
+ * @returns 贡献者头像列表。 / The contributor avatar list.
+ */
 export const Contributors: React.FC<ContributorsProps> = memo(({ repo }) => {
   const [ref, ready] = useComponentReady<HTMLDivElement>({ enabled: true, key: repo });
   const AsyncContributors = createContributorsComponent(repo);

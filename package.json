@@ -1,33 +1,74 @@
 {
-  "name": "@iringo/doc-ui",
-  "version": "2.4.1",
-  "description": "",
+  "name": "@nsnanocat/doc-ui",
+  "version": "2.4.2",
+  "description": "Rspress documentation components for NSNanoCat projects",
+  "author": "VirgilClyne <Virgil@nanocat.me>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/NSNanoCat/docUI#readme",
+  "bugs": "https://github.com/NSNanoCat/docUI/issues",
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/lib/index.js"
+    },
+    "./theme": {
+      "types": "./dist/types/theme/index.d.ts",
+      "import": "./dist/es/theme/index.js",
+      "require": "./dist/lib/theme/index.js"
+    }
+  },
   "scripts": {
     "dev": "npm-run-all --parallel build:watch demo:dev",
     "demo:dev": "rspress dev",
+    "demo:build": "rspress build",
     "build:watch": "modern build -w",
-    "build": "modern build"
+    "build": "modern build",
+    "lint": "biome check .",
+    "test": "npm run build && npm run demo:build",
+    "check": "npm run lint && npm test",
+    "prepack": "npm run build"
   },
-  "files": ["dist", "CHANGELOG.md"],
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "dependencies": {
     "@rc-component/qrcode": "^1.0.0",
     "rc-tooltip": "^6.2.1"
   },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rspress": "^1.36.0"
+  },
   "devDependencies": {
+    "@biomejs/biome": "2.4.6",
     "@modern-js/module-tools": "^2.60.2",
     "@types/node": "^20.0.0",
     "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
     "npm-run-all2": "^6.2.3",
     "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rspress": "^1.36.0",
     "typescript": "^5.6.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NSRingo/engineering-solutions",
-    "directory": "packages/utils"
+    "url": "git+https://github.com/NSNanoCat/docUI.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

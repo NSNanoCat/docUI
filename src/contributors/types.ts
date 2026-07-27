@@ -56,8 +56,12 @@ interface UserBase {
   public_gists: number;
   followers: number;
   following: number;
-  created_at: string; // ISO 8601 date-time
-  updated_at: string; // ISO 8601 date-time
+  // ISO 8601 日期时间。
+  // ISO 8601 date-time.
+  created_at: string;
+  // ISO 8601 日期时间。
+  // ISO 8601 date-time.
+  updated_at: string;
   private_gists?: number;
   total_private_repos?: number;
   owned_private_repos?: number;

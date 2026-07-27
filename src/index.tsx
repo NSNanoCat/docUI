@@ -1,3 +1,3 @@
-export * from './module-install';
-export * from './nav-icon';
-export * from './contributors';
+export * from "./contributors";
+export * from "./module-install";
+export * from "./nav-icon";

@@ -1,6 +1,6 @@
-import { defineConfig } from 'rspress/config';
+import { defineConfig } from "rspress/config";
 
 export default defineConfig({
-  root: 'docs',
-  title: 'Demo',
+  root: "docs",
+  title: "Demo",
 });
