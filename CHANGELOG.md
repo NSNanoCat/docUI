@@ -1,5 +1,11 @@
 # @nsnanocat/doc-ui
 
+## 2.4.5
+
+### Patch Changes
+
+- 修正项目导航弹层 header 顶部间距过大的问题。
+
 ## 2.4.4
 
 ### Patch Changes
