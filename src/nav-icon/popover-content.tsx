@@ -15,7 +15,7 @@ const PROJECTS = [
   },
   {
     icon: "https://avatars.githubusercontent.com/u/129515498?s=80&v=4",
-    url: "https://BiliUniverse.io/",
+    url: "https://BiliUniverse.github.io/",
     title: "🪐 哔哩万象 BiliUniverse",
     description: "哔哩哔哩功能优化及增强解决方案",
   },
