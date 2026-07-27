@@ -1,5 +1,11 @@
 # @nsnanocat/doc-ui
 
+## 2.4.4
+
+### Patch Changes
+
+- 修正 peer dependencies，避免 Rspress 2 站点重复安装 Rspress 1，并兼容 React 18 与 React 19。
+
 ## 2.4.3
 
 ### Patch Changes
