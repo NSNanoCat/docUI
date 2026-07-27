@@ -1,5 +1,12 @@
 # @nsnanocat/doc-ui
 
+## 2.4.3
+
+### Patch Changes
+
+- 恢复 BiliUniverse GitHub Pages 地址，并更新 NanoCat 品牌与 Telegram 频道导航链接。
+- 增加直接读取源码且支持热更新的 Rspress 调试模式。
+
 ## 2.4.2
 
 ### Patch Changes

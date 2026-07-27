@@ -1,6 +1,6 @@
 {
   "name": "@nsnanocat/doc-ui",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Rspress documentation components for NSNanoCat projects",
   "author": "VirgilClyne <Virgil@nanocat.me>",
   "license": "Apache-2.0",
@@ -22,9 +22,10 @@
     }
   },
   "scripts": {
-    "dev": "npm-run-all --parallel build:watch demo:dev",
+    "dev": "rspress dev",
     "demo:dev": "rspress dev",
     "demo:build": "rspress build",
+    "preview": "rspress preview",
     "build:watch": "modern build -w",
     "build": "modern build",
     "lint": "biome check .",
@@ -51,10 +52,10 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.6",
     "@modern-js/module-tools": "^2.60.2",
+    "@rsbuild/plugin-svgr": "^1.3.1",
     "@types/node": "^20.0.0",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "npm-run-all2": "^6.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rspress": "^1.36.0",

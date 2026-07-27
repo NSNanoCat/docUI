@@ -57,9 +57,18 @@ export * from "@nsnanocat/doc-ui/theme";
 
 ## 开发
 
+启动直接读取 `src` 且支持热更新的 Rspress 调试站：
+
 ```shell
 npm install
 npm run dev
+```
+
+构建并预览演示站：
+
+```shell
+npm run demo:build
+npm run preview
 ```
 
 完整检查：
