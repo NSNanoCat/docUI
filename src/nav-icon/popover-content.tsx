@@ -41,9 +41,9 @@ export const PopoverContent: React.FC = () => {
   };
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.icon}>🍟</span> 整点薯条
-      </div>
+      <a className={styles.header} href="https://NSNanoCat.github.io/" target="_blank" rel="noopener noreferrer">
+        <span className={styles.icon}>🍟</span> NanoCat Co., Ltd.
+      </a>
 
       <div className={styles.main}>{PROJECTS.map(renderLink)}</div>
     </div>
