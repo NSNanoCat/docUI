@@ -1,5 +1,12 @@
 # @nsnanocat/doc-ui
 
+## 2.4.7
+
+### Patch Changes
+
+- 修正 Rspress 2 中 `ModuleInstall` 标签不显示及无法正常切换的问题。
+- 多个 `ModuleInstall` 实例改为按应用类型同步，共同选项可联动，缺少对应选项的实例保持当前标签。
+
 ## 2.4.6
 
 ### Patch Changes
