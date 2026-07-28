@@ -32,12 +32,15 @@ export function ModuleInstall({ urlPrefix = "", urls, children }: ModuleInstallP
   }, []);
 
   const tabLabels = useMemo(() => {
-    const result: React.ReactNode[] = [];
+    const result: Array<{ label: React.ReactNode; value: SupportedApp }> = [];
     if (urls) {
       Object.keys(urls).forEach((item) => {
         const appType = item as SupportedApp;
         if (SUPPORTED_APPS.includes(appType)) {
-          result.push(renderTabLabel(appType));
+          result.push({
+            label: renderTabLabel(appType),
+            value: appType,
+          });
         }
       });
     } else if (children) {
@@ -45,7 +48,10 @@ export function ModuleInstall({ urlPrefix = "", urls, children }: ModuleInstallP
         if (isValidElement(child)) {
           const appType = child.props.type;
           if (SUPPORTED_APPS.includes(appType)) {
-            result.push(renderTabLabel(appType));
+            result.push({
+              label: renderTabLabel(appType),
+              value: appType,
+            });
           }
         }
       });
@@ -57,7 +63,10 @@ export function ModuleInstall({ urlPrefix = "", urls, children }: ModuleInstallP
     if (children) {
       return Children.map(children, (child) => {
         if (isValidElement(child)) {
-          return cloneElement(child, { __urlPrefix: urlPrefix } as any);
+          const appType = child.props.type;
+          if (SUPPORTED_APPS.includes(appType)) {
+            return cloneElement(child, { __urlPrefix: urlPrefix } as any);
+          }
         }
         return null;
       });
@@ -67,7 +76,7 @@ export function ModuleInstall({ urlPrefix = "", urls, children }: ModuleInstallP
       const appType = item as SupportedApp;
       if (SUPPORTED_APPS.includes(appType)) {
         result.push(
-          <Tab key={appType}>
+          <Tab key={appType} value={appType}>
             <AppTabContent key={appType} appType={appType} url={`${urlPrefix}${urls?.[appType]}`} />
           </Tab>,
         );

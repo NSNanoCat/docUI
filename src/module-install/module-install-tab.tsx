@@ -19,7 +19,7 @@ export interface ModuleInstallTabProps {
  */
 export const ModuleInstallTab: React.FC<ModuleInstallTabProps> = ({ type: appType, __urlPrefix, children }) => {
   return (
-    <Tab key={appType}>
+    <Tab key={appType} value={appType}>
       <div className="text-sm">
         {Children.map(children, (child) => {
           if (isValidElement(child)) {
