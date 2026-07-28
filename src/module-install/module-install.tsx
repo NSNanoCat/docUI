@@ -1,10 +1,15 @@
-import { Children, cloneElement, isValidElement, useCallback, useMemo } from "react";
+import { Children, cloneElement, isValidElement, useCallback, useEffect, useMemo, useState } from "react";
 import { Tab, Tabs } from "rspress/theme";
 import { AppTabContent } from "./app-tab-content";
 import { APP_LABEL_MAP, SUPPORTED_APPS, type SupportedApp } from "./constants";
 import styles from "./module-install.module.scss";
 import { ModuleInstallItem } from "./module-install-item";
 import { ModuleInstallTab } from "./module-install-tab";
+
+// 使用应用类型而非位置同步不同实例，避免标签数量或顺序不同时错配。
+// Synchronize instances by app type instead of position to avoid mismatches across different tab sets.
+const MODULE_INSTALL_STORAGE_KEY = "rspress.tabs.module.install";
+const MODULE_INSTALL_SYNC_EVENT = "nsnanocat.module-install.tab-change";
 
 export interface ModuleInstallProps {
   urlPrefix?: string;
@@ -85,8 +90,55 @@ export function ModuleInstall({ urlPrefix = "", urls, children }: ModuleInstallP
     return result;
   }, [urlPrefix, urls, children]);
 
+  const [activeTab, setActiveTab] = useState<SupportedApp | undefined>(() => tabLabels[0]?.value);
+
+  useEffect(() => {
+    const syncActiveTab = (value: string | null) => {
+      const matchingTab = tabLabels.find((tab) => tab.value === value);
+      if (matchingTab) {
+        setActiveTab(matchingTab.value);
+      }
+    };
+    setActiveTab((currentTab) =>
+      tabLabels.some((tab) => tab.value === currentTab) ? currentTab : tabLabels[0]?.value,
+    );
+    syncActiveTab(window.localStorage.getItem(MODULE_INSTALL_STORAGE_KEY));
+
+    const handleTabSync = (event: Event) => {
+      syncActiveTab((event as CustomEvent<SupportedApp>).detail);
+    };
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key === MODULE_INSTALL_STORAGE_KEY) {
+        syncActiveTab(event.newValue);
+      }
+    };
+    window.addEventListener(MODULE_INSTALL_SYNC_EVENT, handleTabSync);
+    window.addEventListener("storage", handleStorage);
+    return () => {
+      window.removeEventListener(MODULE_INSTALL_SYNC_EVENT, handleTabSync);
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, [tabLabels]);
+
+  const handleTabChange = useCallback(
+    (index: number) => {
+      const selectedTab = tabLabels[index];
+      if (!selectedTab) {
+        return;
+      }
+      setActiveTab(selectedTab.value);
+      window.localStorage.setItem(MODULE_INSTALL_STORAGE_KEY, selectedTab.value);
+      window.dispatchEvent(
+        new CustomEvent<SupportedApp>(MODULE_INSTALL_SYNC_EVENT, {
+          detail: selectedTab.value,
+        }),
+      );
+    },
+    [tabLabels],
+  );
+
   return (
-    <Tabs groupId="module.install" values={tabLabels}>
+    <Tabs key={activeTab} values={tabLabels} defaultValue={activeTab} onChange={handleTabChange}>
       {renderTabContent}
     </Tabs>
   );
